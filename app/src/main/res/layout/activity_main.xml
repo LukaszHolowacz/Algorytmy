@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/szary"
+    android:columnCount="1"
+    android:paddingBottom="0dp"
+    android:paddingStart="25dp"
+    android:paddingTop="75dp">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:columnCount="2"
+        android:layout_marginEnd="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="0.5"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:text="@string/algorytm_karpa_rabina"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1.5"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/karpa_rabina_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:checked="true"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/czas_dzialania"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:id="@+id/karpa_rabina_wynik"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@drawable/text_view_background"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:columnCount="2"
+        android:layout_marginEnd="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="0.5"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:text="@string/algorytm_boyera_i_moorea"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1.5"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/boyera_i_moorea_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:checked="true"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/czas_dzialania"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:id="@+id/boyera_i_moorea_wynik"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@drawable/text_view_background"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:columnCount="2"
+        android:layout_marginEnd="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="0.5"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:text="@string/algorytm_kmp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1.5"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/kmp_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:buttonTint="@color/black"
+                android:checked="true"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/czas_dzialania"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:id="@+id/kmp_wynik"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="@drawable/text_view_background"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_marginEnd="25dp">
+
+        <EditText
+            android:id="@+id/ile_razy"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:hint="@string/ile_razy2"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:padding="5dp"
+            android:inputType="number"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/glowny_button"
+            android:layout_width="wrap_content"
+            android:height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/wykonaj"
+            android:textColor="@color/black"/>
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/autor"
+        android:textAlignment="textEnd"
+        android:textStyle="bold"
+        android:text="@string/autor"/>
+
+</GridLayout>

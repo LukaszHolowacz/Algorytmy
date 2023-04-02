@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Algorytmy</string>
+    <string name="autor">Autor: Łukasz Hołowacz 3pr</string>
+    <string name="algorytm_karpa_rabina">Algorytm Karpa-Rabina</string>
+    <string name="czas_dzialania_kr">Czas działania algorytmu Karpa-Rabina:</string>
+    <string name="czas_dzialania">Czas działania tego algorytmu:</string>
+    <string name="algorytm_boyera_i_moorea">Algorytm Boyera i Moore’a</string>
+    <string name="algorytm_kmp">Algorytm Knutha-Morrisa-Pratta</string>
+    <string name="ile_razy">Ile razy chcesz to posortować?</string>
+    <string name="ile_razy2">Ile razy chcesz posortować?</string>
+    <string name="wykonaj">Wykonaj</string>
+</resources>
