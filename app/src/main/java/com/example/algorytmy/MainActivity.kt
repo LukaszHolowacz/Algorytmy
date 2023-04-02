@@ -35,15 +35,20 @@ class MainActivity : AppCompatActivity() {
             else{
                 val tekst = generateRandomString()
                 val wzorzec = generatePattern()
+                println("Tekst: " + tekst)
+                println("Wzorzec: " + wzorzec)
                 if(kr_cb.isChecked){
                     val czas = measureTimeMillis {
                         algorytm_karpa_rabina(tekst, wzorzec, ile_razy.text.toString().toInt())
                     }
-                    kr_wynik.text = String.format("%s ms", czas)
+                    kr_wynik.text = "$czas ms"
                 }
 
                 if(bm_cb.isChecked){
-
+                    val czas = measureTimeMillis {
+                        algorytm_boyeramoorea(tekst, wzorzec, ile_razy.text.toString().toInt())
+                    }
+                    bm_wynik.text = "$czas ms"
                 }
 
                 if(kmp_cb.isChecked){
@@ -54,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun algorytm_karpa_rabina(text: String, pattern: String, repeatCount: Int){
+        var pozycja = -1
         for (powtorzenie in 0 until repeatCount){
             val prime = 101
             val n = text.length
@@ -80,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                         j++
                     }
                     if (j == m) {
-                        println("Wzorzec znaleziony na indeksie $i.")
+                        pozycja = i
                     }
                 }
                 if (i < n - m) {
@@ -90,6 +96,43 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+        if(pozycja != -1){
+            println("Algorytm Karpa-Rabina znalazł wzorzec w tekście na pozycji: $pozycja")
+        }
+    }
+
+    fun algorytm_boyeramoorea(text: String, pattern: String, ile_razy: Int) {
+        var pozycja = -1
+        for(b in 0 until ile_razy){
+            val n = text.length
+            val m = pattern.length
+
+            // Utwórz tablicę przesunięć
+            val shifts = IntArray(256) { m }
+            for (i in 0 until m - 1) {
+                shifts[pattern[i].toInt()] = m - i - 1
+            }
+
+            // Szukaj wzorca w tekście
+            var i = m - 1
+            var j = i
+            while (i < n) {
+                if (text[i] == pattern[j]) {
+                    if (j == 0) {
+                        pozycja = i // Znaleziono wzorzec
+                    } else {
+                        i--
+                        j--
+                    }
+                } else {
+                    i += shifts[text[i].toInt()]
+                    j = m - 1
+                }
+            }
+        }
+        if(pozycja != -1){
+            println("Algorytm BayerMoore'a znalazł wzorzec w tekście na pozycji: $pozycja")
         }
     }
 
