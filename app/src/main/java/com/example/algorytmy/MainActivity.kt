@@ -44,17 +44,48 @@ class MainActivity : AppCompatActivity() {
                     kr_wynik.text = "$czas ms"
                 }
 
+                if(kmp_cb.isChecked){
+                    val czas = measureTimeMillis {
+                        algorytm_kmp(tekst, wzorzec, ile_razy.text.toString().toInt())
+                    }
+                    kmp_wynik.text = "$czas ms"
+                }
+
                 if(bm_cb.isChecked){
                     val czas = measureTimeMillis {
                         algorytm_boyeramoorea(tekst, wzorzec, ile_razy.text.toString().toInt())
                     }
                     bm_wynik.text = "$czas ms"
                 }
+            }
+        }
+    }
 
-                if(kmp_cb.isChecked){
-
+    fun algorytm_kmp(text: String, pattern: String, ile_razy: Int) {
+        val pozycje = mutableListOf<Int>()
+        for (b in 0 until ile_razy){
+            val n = text.length
+            val m = pattern.length
+            val lps = computeLPS(pattern)
+            var i = 0
+            var j = 0
+            while (j < n) {
+                if (pattern[i] == text[j]) {
+                    i++
+                    j++
+                    if (i == m) {
+                        pozycje.add(j-m)
+                        i = lps[i-1]
+                    }
+                } else if (i > 0) {
+                    i = lps[i-1]
+                } else {
+                    j++
                 }
             }
+        }
+        if(pozycje.isNotEmpty()) {
+            println(pozycje)
         }
     }
 
@@ -107,33 +138,49 @@ class MainActivity : AppCompatActivity() {
         for(b in 0 until ile_razy){
             val n = text.length
             val m = pattern.length
-
-            // Utwórz tablicę przesunięć
-            val shifts = IntArray(256) { m }
+            val skok = IntArray(256) { m }
             for (i in 0 until m - 1) {
-                shifts[pattern[i].toInt()] = m - i - 1
+                skok[pattern[i].toInt()] = m - i - 1
             }
-
-            // Szukaj wzorca w tekście
             var i = m - 1
-            var j = i
+            var j: Int
             while (i < n) {
-                if (text[i] == pattern[j]) {
+                j = m - 1
+                while (text[i] == pattern[j]) {
                     if (j == 0) {
-                        pozycja = i // Znaleziono wzorzec
-                    } else {
-                        i--
-                        j--
+                        pozycja = i - m + 1
                     }
-                } else {
-                    i += shifts[text[i].toInt()]
-                    j = m - 1
+                    i--
+                    j--
                 }
+                i += maxOf(skok[text[i].toInt()], m - j - 1)
             }
         }
         if(pozycja != -1){
             println("Algorytm BayerMoore'a znalazł wzorzec w tekście na pozycji: $pozycja")
         }
+    }
+
+    fun computeLPS(pattern: String): IntArray {
+        val m = pattern.length
+        val lps = IntArray(m)
+        var len = 0
+        var i = 1
+        while (i < m) {
+            when {
+                pattern[i] == pattern[len] -> {
+                    len++
+                    lps[i] = len
+                    i++
+                }
+                len > 0 -> len = lps[len - 1]
+                else -> {
+                    lps[i] = 0
+                    i++
+                }
+            }
+        }
+        return lps
     }
 
     fun generateRandomString(): String {
